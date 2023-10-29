@@ -23,17 +23,18 @@ class _HomeState extends State<Home> {
       appBar: AppBar(title: const Text('Todos Lists'),),
       body: tabs[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
         currentIndex: selectedIndex,
         onTap: (index)=>setState(() {
           selectedIndex =index;
         }),
         items: const [
         BottomNavigationBarItem(
-            icon: Icon(Icons.fact_check),
+            icon: Icon(Icons.fact_check,color: Colors.black,),
             label: 'Todos'
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.done),
+            icon: Icon(Icons.done,color: Colors.black),
             label: 'Completed'
         ),
       ],),

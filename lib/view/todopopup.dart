@@ -13,8 +13,8 @@ class TodoPopUp extends StatefulWidget {
 
 class _TodoPopUpState extends State<TodoPopUp> {
   final _formKey=GlobalKey<FormState>();
-  String title='q';
-  String description='q';
+  String title='';
+  String description='';
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

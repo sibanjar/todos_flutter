@@ -2,6 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todos/provider_model/task_model.dart';
 
+import '../view/Utils.dart';
+
 class TodosProvider extends ChangeNotifier{
    final List<Task> _tasks=[
      Task(
@@ -13,18 +15,19 @@ class TodosProvider extends ChangeNotifier{
          createdTime: DateTime.now(),
        description: 'This is cat description'
      ),
+    Task(
+        title: 'fish',
+      createdTime: DateTime.now(),
+    ),
      Task(
-         title: 'tigeer',
-         createdTime: DateTime.now()
-     ),
-     Task(
-         title: 'lion',
-         createdTime: DateTime.now()
-     ),
+         title: 'bird',
+         createdTime: DateTime.now(),
+     )
    ];
 
    List<Task> get tasks=> _tasks.where((task) => task.isDone==false).toList();
    List<Task> get tasksCompleted=> _tasks.where((task) => task.isDone==true).toList();
+
    void addTask(Task task){
    _tasks.add(task);
    notifyListeners();
@@ -35,9 +38,18 @@ class TodosProvider extends ChangeNotifier{
 
      notifyListeners();
    }
-   bool toggleTodoStatus(Task task){
+
+   void editTask(Task task, String title, String description,){
+     task.title=title;
+     task.description=description;
+
+     notifyListeners();
+   }
+
+   void toggleTodoStatus(BuildContext context,Task task){
      task.isDone=!task.isDone;
      notifyListeners();
-     return task.isDone;
+     Utils.showSnackBar(context, task.isDone?'task completed':'task incomplete');
+
    }
 }
