@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todos/provider_model/task_model.dart';
-import 'package:todos/view/edit_page.dart';
-import '../provider_model/todo_model.dart';
-import 'Utils.dart';
+import 'package:todos/utilities/Utils.dart';
+import '../../provider_model/task_model.dart';
+import '../../provider_model/todo_model.dart';
+import 'edit_page.dart';
 
 class TodoWidget extends StatelessWidget {
   final Task todo;
@@ -46,13 +46,9 @@ class TodoWidget extends StatelessWidget {
                   ),
                     onPressed:()=>editTodo(context,todo)
                     , child: const Text('Edit')),
-                // TextButton(
-                //     style: ButtonStyle(
-                //       padding: MaterialStateProperty.all(EdgeInsets.zero),
-                //     ),
-                //     onPressed:()=>deleteTodo(context,todo)
-                //     , child: const Text('Delete')),
-                IconButton(onPressed: ()=>deleteTodo(context,todo), icon: Icon(Icons.delete_forever,color: Colors.red,))
+
+                IconButton(onPressed: ()=>deleteTodo(context,todo),
+                    icon: const Icon(Icons.delete_forever,color: Colors.red,)),
               ],
             )
           ],

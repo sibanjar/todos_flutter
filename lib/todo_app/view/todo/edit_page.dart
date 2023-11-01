@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todos/provider_model/task_model.dart';
-import 'package:todos/view/todoformwidget.dart';
-import 'package:todos/provider_model/todo_model.dart';
+import 'package:todos/todo_app/view/todo/todoformwidget.dart';
+
+import '../../provider_model/task_model.dart';
+import '../../provider_model/todo_model.dart';
 
 
 class EditPage extends StatefulWidget {
@@ -33,15 +34,19 @@ class _EditPageState extends State<EditPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(18.0),
-          child: Form(
-            key: _formKey,
-            child: TodoFormWidget(
-                title: title,
-                description: description,
-                onChangedTitle: (title)=>setState(()=>this.title=title),
-                onChangedDescription: (description)=>setState(()=>this.description=description),
-                onSavedTodo: saveTodo,
-            ),
+          child: Column(
+            children: [
+              Form(
+                key: _formKey,
+                child: TodoFormWidget(
+                    title: title,
+                    description: description,
+                    onChangedTitle: (title)=>setState(()=>this.title=title),
+                    onChangedDescription: (description)=>setState(()=>this.description=description),
+                    onSavedTodo: saveTodo,
+                ),
+              ),
+            ],
           ),
         ),
       ),

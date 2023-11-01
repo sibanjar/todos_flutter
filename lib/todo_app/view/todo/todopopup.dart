@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todos/view/todoformwidget.dart';
-import 'package:todos/provider_model/task_model.dart';
-import 'package:todos/provider_model/todo_model.dart';
+import 'package:todos/todo_app/view/todo/todoformwidget.dart';
+
+import '../../provider_model/task_model.dart';
+import '../../provider_model/todo_model.dart';
 
 class TodoPopUp extends StatefulWidget {
   const TodoPopUp({super.key});

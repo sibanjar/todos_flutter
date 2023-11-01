@@ -1,8 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:todos/provider_model/task_model.dart';
+import 'package:todos/todo_app/provider_model/task_model.dart';
 
-import '../view/Utils.dart';
+import 'package:todos/utilities/Utils.dart';
 
 class TodosProvider extends ChangeNotifier{
    final List<Task> _tasks=[

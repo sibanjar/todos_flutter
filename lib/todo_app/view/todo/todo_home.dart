@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:todos/view/todopopup.dart';
-import 'package:todos/view/todosCompleted.dart';
-import 'package:todos/view/Todolist.dart';
+import 'package:todos/todo_app/view/todo/todopopup.dart';
+import 'package:todos/todo_app/view/todo/todosCompleted.dart';
+import 'Todolist.dart';
 
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class TODO_HOME extends StatefulWidget {
+  const TODO_HOME({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<TODO_HOME> createState() => _TodoHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _TodoHomeState extends State<TODO_HOME> {
   int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
