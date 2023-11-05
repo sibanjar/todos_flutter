@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todos/utilities/Utils.dart';
-
-import '../data/data_fetcher.dart';
-import '../provider/post_provider.dart';
-import '../resources/constants.dart';
+import 'package:todos/api_test_app/data/data_fetcher.dart';
+import 'package:todos/api_test_app/provider/post_provider.dart';
+import 'package:todos/api_test_app/resources/constants.dart';
 import 'edit_page_jsonTest.dart';
 
 class TestApi extends StatefulWidget {
@@ -15,7 +14,7 @@ class TestApi extends StatefulWidget {
 }
 
 class _TestApiState extends State<TestApi> {
-  String? deleteSuccess;
+  // String? deleteSuccess;
 
   @override
   void initState() {
@@ -53,8 +52,8 @@ class _TestApiState extends State<TestApi> {
                         Expanded(
                           child: Column(
                               children: [
-                                Text(item.id.toString()),
-                                Text(item.name.toString()),
+                                Text('${item.id}' ?? ''),
+                                Text(item.name ?? ''),
                               ]
                           ),
                         ),
@@ -82,16 +81,16 @@ class _TestApiState extends State<TestApi> {
       ),
     );
   }
-  void deleteItem(PostProvider postProvider, int? itemId) async {
-    try {
-    deleteSuccess=  await postProvider.deleteDataFromAPI(itemId!);
-    } catch (e) {
-      print(AppConstants.deleteFail+e.toString());
+  void deleteItem(PostProvider postProvider, int? itemId) {
+    postProvider.deleteDataFromAPI(itemId!).then((value) => {
+      Utils.showSnackBar(context, AppConstants.deleteSuccess(itemId))
+    }).catchError((e) => {
+    debugPrint(AppConstants.deleteFail+e.toString())
     }
-    Utils.showSnackBar(context, AppConstants.deleteFailApi);
+    );
   }
 
-  void editItem(PostProvider postProvider, DataFetcher item) {
+  void editItem(PostProvider postProvider, UserInformation item) {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => EditUser(data: item))
     );

@@ -6,11 +6,12 @@ import 'package:http/http.dart' as http;
 
 
 class PostRepository{
-
-  Future<List<DataFetcher>> fetchPosts() async {
+// change DataFEtcher to good name
+// 12,13 ma try catch
+  Future<List<UserInformation>> fetchPosts() async {
     final response = await http.get(Uri.parse(UrlNames.usersUrl));
     final List<dynamic> jsonData = json.decode(response.body);
-    return jsonData.map((item) => DataFetcher.fromJson(item)).toList();
+    return jsonData.map((item) => UserInformation.fromJson(item)).toList();
   }
 
   Future<String?> deleteDataFromAPI(int postId) async {
@@ -22,7 +23,7 @@ class PostRepository{
     }
   }
   Future<void> updateDataToAPI(int id,String name) async {
-    final dataToUpdate = DataFetcher(name: name, id: id).toJson();
+    final dataToUpdate = UserInformation(name: name, id: id).toJson();
     final response = await http.put(Uri.parse('${UrlNames.usersUrl}/$id'),
       body: json.encode(dataToUpdate),
       headers: {'Content-Type': 'application/json'} );

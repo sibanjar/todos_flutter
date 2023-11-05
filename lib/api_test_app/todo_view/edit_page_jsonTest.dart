@@ -6,7 +6,7 @@ import 'api_form_widget.dart';
 
 
 class EditUser extends StatefulWidget {
-  final DataFetcher data;
+  final UserInformation data;
   const EditUser({super.key, required this.data});
 
   @override

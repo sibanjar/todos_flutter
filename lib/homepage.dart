@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todos/Blogs/blog..dart';
 import 'package:todos/FAQ/faq_page.dart';
+import 'package:todos/testing/test.dart';
 import 'package:todos/todo_app/view/todo/todo_home.dart';
 import 'package:todos/api_test_app/todo_view/test_json.dart';
 
@@ -36,6 +38,16 @@ class HOME extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const CustomerSupportHome())
                     );
                   }, child: const Text('Customer Support')),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const Blogs())
+                    );
+                  }, child: const Text('blogs')),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const Test())
+                    );
+                  }, child: const Text('test')),
             ],
           ),
         ),

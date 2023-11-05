@@ -40,6 +40,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flutter_native_splash: ^2.3.5
   flutter_svg: ^2.0.9
+  intl: ^0.18.1
+  timeago: ^3.6.0
 
 
 dev_dependencies:

@@ -1,31 +1,31 @@
 import 'package:flutter/cupertino.dart';
-
-import '../data/data_fetcher.dart';
-import '../data/post_repository.dart';
-import '../resources/constants.dart';
+import 'package:todos/api_test_app/data/data_fetcher.dart';
+import 'package:todos/api_test_app/data/post_repository.dart';
+import 'package:todos/api_test_app/resources/constants.dart';
 
 class PostProvider extends ChangeNotifier{
   // change class name to PostProvider
   // fetch data from api
   // TODO: Move api function to another file
 
-  List<DataFetcher> _items=[];
+  List<UserInformation> _items=[];
   bool _loading=false;
   PostRepository postRepository=PostRepository();
 
   bool get loading=>_loading;
-  List<DataFetcher> get items=>_items;
+  List<UserInformation> get items=>_items;
 
   void setLoading(bool value){
     _loading=value;
+    notifyListeners();
   }
   Future<void> fetchDataFromAPI() async {
     try{
       setLoading(true);
-      _items=await postRepository.fetchPosts();
+      _items = await postRepository.fetchPosts();
       notifyListeners();
     }catch(e){
-      rethrow;
+    debugPrint('$e');
     }
     finally{
       setLoading(false);
@@ -43,14 +43,15 @@ class PostProvider extends ChangeNotifier{
     }
   }
 
-  Future<void> updateData(DataFetcher data, int id, String name) async {
+  Future<void> updateData(UserInformation data, int id, String name) async {
     try{
       await postRepository.updateDataToAPI(id,name);
+      data.name=name;
+      notifyListeners();
     }catch(e){
-      rethrow;
+      debugPrint('$e');
     }
-   data.name=name;
-    notifyListeners();
+
   }
 
   }

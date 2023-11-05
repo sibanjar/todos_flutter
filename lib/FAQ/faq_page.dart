@@ -17,11 +17,13 @@ class FaqPage extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: Wrap(
+        child: Column(
           children: [
             FaqWidget(),
             FaqWidget(),
             FaqWidget(),
+            FaqWidget(),
+
           ],
         ),
       )
